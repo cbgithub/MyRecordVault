@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyRecordVault.Models
 {
-    public class Record
+    public class Password
     {
     }
 }
