@@ -3,27 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyRecordVault.Views.RecordAddPage">
 
-    <StackLayout BackgroundColor="#f0f7ff" Spacing="10" Padding="10">
-        <Entry Text="{Binding NewRecordTitle.Value}" Placeholder="Title"></Entry>
-        <Entry Text="{Binding NewRecordUserName.Value}" Placeholder="User Name"></Entry>
-        <StackLayout Orientation="Horizontal">
-            <Entry Text="{Binding NewRecordPassword.Value}" HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
-            <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
+    <ScrollView>
+        <ScrollView.Padding>
+            <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+        </ScrollView.Padding>
+
+        <StackLayout BackgroundColor="#f0f7ff" Spacing="10" Padding="10">
+            <Entry Text="{Binding NewRecordTitle.Value}" Placeholder="Title"></Entry>
+            <Entry Text="{Binding NewRecordUserName.Value}" Placeholder="User Name"></Entry>
+            <StackLayout Orientation="Horizontal">
+                <Entry Text="{Binding NewRecordPassword.Value}" HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
+                <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
+            </StackLayout>
+            <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
+            <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="23" Value="{Binding NewRecordPasswordLength.Value}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="A-Z"></Label>
+                <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>
+                <Label Text="0-9"></Label>
+                <Switch IsToggled="{Binding IsDigit.Value}"></Switch>
+                <Label Text="!@#"></Label>
+                <Switch IsToggled="{Binding IsSpecialCharacter.Value}"></Switch>
+            </StackLayout>
+            <StackLayout Padding="0, 0, 0, 20">
+                <Label Text="Notes:" />
+                <Editor Text="{Binding NewRecordNote.Value}" HeightRequest="150" />
+            </StackLayout>
+            <Button Text="Save" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding Save}"></Button>
         </StackLayout>
-        <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
-        <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="23" Value="{Binding NewRecordPasswordLength.Value}"/>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="A-Z"></Label>
-            <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>
-            <Label Text="0-9"></Label>
-            <Switch IsToggled="{Binding IsDigit.Value}"></Switch>
-            <Label Text="!@#"></Label>
-            <Switch IsToggled="{Binding IsSpecialCharacter.Value}"></Switch>
-        </StackLayout>
-        <StackLayout Padding="0, 0, 0, 20">
-            <Label Text="Notes:" />
-            <Editor Text="{Binding NewRecordNote.Value}" HeightRequest="150" />
-        </StackLayout>
-        <Button Text="Save" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding Save}"></Button>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>
