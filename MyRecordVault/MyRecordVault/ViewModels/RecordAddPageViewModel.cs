@@ -35,6 +35,8 @@ namespace MyRecordVault.ViewModels
 
         public ReactiveProperty<string> NewRecordPassword { get; } = new ReactiveProperty<string>();
 
+        public ReactiveProperty<string> NewRecordNote { get; } = new ReactiveProperty<string>();
+
         public ReactiveProperty<int> NewRecordPasswordLength { get; } = new ReactiveProperty<int>();
 
         public ReactiveProperty<bool> IsCaseSensitive { get; } = new ReactiveProperty<bool>();
@@ -96,6 +98,7 @@ namespace MyRecordVault.ViewModels
                         Title = this.NewRecordTitle.Value,
                         UserName = this.NewRecordUserName.Value,
                         Password = this.NewRecordPassword.Value,
+                        Note = this.NewRecordNote.Value,
                         CreatedAt = DateTime.Now,
                         Delete = false
                     };

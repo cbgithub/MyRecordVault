@@ -48,11 +48,26 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Acr.Notifications, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.Notifications.2.0.1\lib\MonoAndroid10\Acr.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Notifications.Interface, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.Notifications.2.0.1\lib\MonoAndroid10\Acr.Notifications.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Settings, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.Settings.5.1.0\lib\MonoAndroid10\Acr.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.Settings.Interface, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.Settings.5.1.0\lib\MonoAndroid10\Acr.Settings.Interface.dll</HintPath>
+    </Reference>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Plugin.Fingerprint, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.Fingerprint.1.4.2\lib\MonoAndroid\Plugin.Fingerprint.dll</HintPath>
     </Reference>
@@ -154,6 +169,9 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.193\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="XamarinShortcutBadger, Version=1.1.401.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Android.ShortcutBadger.1.1.404\lib\MonoAndroid10\XamarinShortcutBadger.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
