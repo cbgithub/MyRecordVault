@@ -1,4 +1,5 @@
-﻿using MyRecordVault.Models;
+﻿using MyRecordVault.Commands;
+using MyRecordVault.Models;
 using MyRecordVault.Services;
 using MyRecordVault.Views;
 using Reactive.Bindings;
@@ -55,7 +56,60 @@ namespace MyRecordVault.ViewModels
 
         public ICommand RefreshCommand
         {
-            get { return refreshCommand ?? (refreshCommand = new Command(async () => await OnNavigatedTo())); }
+            get { return refreshCommand ?? (refreshCommand = new Command(Refresh, () =>
+            {
+                return !IsBusy;
+            
+                
+            }));
+        }
+    }
+
+        private async void Refresh()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            await OnNavigatedTo();
+
+            //DoStuff
+
+            IsBusy = false;
+            await OnNavigatedTo();
+        }
+
+        #region Field
+        private ICommand _navigateTo;
+        #endregion Field
+
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ICommand NavigateTo
+        {
+            get
+            {
+                if (_navigateTo == null)
+                {
+                    _navigateTo = new RelayCommand(
+                    param => NavigateToAddPage(),
+                    param => CanNavigateToAddPage()
+                    );
+                }
+                return _navigateTo;
+            }
+        }
+        private bool CanNavigateToAddPage()
+        {
+            // Verify command can be executed here
+            return true;
+        }
+        private void NavigateToAddPage()
+        {
+             Application.Current.MainPage.Navigation.PushAsync(new RecordAddPage());
+
         }
 
 
@@ -73,7 +127,7 @@ namespace MyRecordVault.ViewModels
             .Subscribe(async _ =>
             {
                 
-                await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new RecordAddPage());
+                await Application.Current.MainPage.Navigation.PushAsync(new RecordAddPage());
             });
 
 
@@ -85,6 +139,8 @@ namespace MyRecordVault.ViewModels
                     this.SelectedItem.Value = null;
                     RecordItemDetailPageViewModel vm = new RecordItemDetailPageViewModel(item.ID);
                     await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new RecordDetailPage(vm));
+                    
+                   
                 });
         }
 

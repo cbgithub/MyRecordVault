@@ -7,11 +7,11 @@
         <Entry Text="{Binding NewRecordTitle.Value}" Placeholder="Title"></Entry>
         <Entry Text="{Binding NewRecordUserName.Value}" Placeholder="User Name"></Entry>
         <StackLayout Orientation="Horizontal">
-            <Entry Text="{Binding NewRecordPassword.Value}" Placeholder="Password"></Entry>
+            <Entry Text="{Binding NewRecordPassword.Value}" HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
             <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
         </StackLayout>
-        <Label  Text = "{Binding NewPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
-        <Slider x:Name="LengthOfPasswordsSlider" Minimum="6" Maximum="23" Value="{Binding NewPasswordLength.Value}"/>
+        <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
+        <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="23" Value="{Binding NewRecordPasswordLength.Value}"/>
         <StackLayout Orientation="Horizontal">
             <Label Text="A-Z"></Label>
             <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 
 namespace MyRecordVault.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class RecordListPage : ContentPage
     {
         RecordListPageViewModel vm = new RecordListPageViewModel();

@@ -6,7 +6,7 @@
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Command="{Binding NavigateToAddRecordPage}">
+        <ToolbarItem Text="+" Command="{Binding NavigateTo}">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource" Android="plus.png" />
             </ToolbarItem.Icon>
@@ -16,7 +16,7 @@
     <controls:PullToRefreshLayout
           IsPullToRefreshEnabled="True"
           RefreshCommand="{Binding RefreshCommand}"
-          IsRefreshing="{Binding IsBusy}"
+          IsRefreshing="{Binding IsBusy, Mode=OneWay}"
           RefreshColor="Blue">
 
 

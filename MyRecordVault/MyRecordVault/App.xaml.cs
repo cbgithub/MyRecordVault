@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyRecordVault.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,11 @@ namespace MyRecordVault
         {
             InitializeComponent();
 
-            MainPage = new MyRecordVault.MainPage();
+            MainPage = new NavigationPage(new RecordListPage())
+            {
+                BarBackgroundColor = Color.Black,
+                BarTextColor = Color.White,
+            };
         }
 
         protected override void OnStart()

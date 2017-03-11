@@ -2,6 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyRecordVault.Views.RecordDetailPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding Save}">
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="plus.png" />
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Delete" Command="{Binding Delete}">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <Frame BindingContext="{Binding Record.Value}" BackgroundColor="#5ABAFF">
         <StackLayout BackgroundColor="#f0f7ff" Spacing="10" Padding="10">
             <Entry Text="{Binding Title}" Placeholder="Title"></Entry>
@@ -11,8 +21,11 @@
                 <Label Text="Notes:" />
                 <Editor Text="{Binding Note}" HeightRequest="150" />
             </StackLayout>
-            <Button Text="Save" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding Save}"></Button>
-            <Button Text="Delete" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding Delete}"></Button>
         </StackLayout>
+        
     </Frame>
+    
+    
+    
+    
 </ContentPage>

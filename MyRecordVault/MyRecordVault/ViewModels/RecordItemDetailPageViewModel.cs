@@ -13,6 +13,14 @@ namespace MyRecordVault.ViewModels
 
         public ReactiveProperty<Record> Record { get; } = new ReactiveProperty<Record>();
 
+        public ReactiveProperty<string> EditRecordTitle { get; } = new ReactiveProperty<string>();
+
+        public ReactiveProperty<string> EditRecordUserName { get; } = new ReactiveProperty<string>();
+
+        public ReactiveProperty<string> EditRecordPassword { get; } = new ReactiveProperty<string>();
+
+        public ReactiveProperty<string> EditRecordNote { get; } = new ReactiveProperty<string>();
+
         public ReactiveCommand Save { get; } = new ReactiveCommand();
 
         public ReactiveCommand Delete { get; } = new ReactiveCommand();
@@ -23,9 +31,9 @@ namespace MyRecordVault.ViewModels
 
         public RecordItemDetailPageViewModel(int id)
         {
-            this.Record.Value.ID = id;
             OnNavigatedTo(id);
-
+            
+            
 
             this.Save
                 .Subscribe(async _ => {
