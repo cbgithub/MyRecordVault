@@ -17,7 +17,7 @@ namespace MyRecordVault.Helpers
 
             if (model.CaseSensitive)
             {
-                var _upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                var _upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
                 _buildPassword += _upperLetters;
             }
 

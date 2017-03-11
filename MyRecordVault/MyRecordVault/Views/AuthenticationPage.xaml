@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyRecordVault.Views.AuthenticationPage">
-    <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="Black">
+    <StackLayout Orientation="Vertical"  Padding="10" BackgroundColor="Black">
         <StackLayout Orientation="Horizontal">
             <StackLayout.IsVisible>
                 <OnPlatform x:TypeArguments="x:Boolean"
@@ -10,10 +10,16 @@
           Android="True"
           WinPhone="False" />
             </StackLayout.IsVisible>
-            <Switch x:Name="swAutoCancel"></Switch>
+           
             <Label Text="Cancel after 10sec"></Label>
         </StackLayout>
-        <Button Text="Authenticate" Clicked="OnAuthenticate"></Button>
-        <Label x:Name="lblStatus"></Label>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="My Record Vault" FontSize="Large" FontAttributes="Italic"  HorizontalTextAlignment="Center" TextColor="#5ABAFF"></Label>
+            <Button Text="Touch ID" BackgroundColor="#5ABAFF" BorderWidth="2" BorderRadius="5" VerticalOptions="CenterAndExpand" TextColor="White"  Clicked="OnAuthenticate"></Button>
+                <Label x:Name="lblStatus"></Label> 
+        </StackLayout>
+         
+      
+       
     </StackLayout>
 </ContentPage>
