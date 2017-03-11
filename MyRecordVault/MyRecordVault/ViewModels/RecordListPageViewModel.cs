@@ -79,7 +79,8 @@ namespace MyRecordVault.ViewModels
 
             SelectedItem
             .Where(item => item != null)
-                .Subscribe(item => {
+                .Subscribe(async item =>
+                {
                     this.SelectedItem.Value = null;
                     RecordItemDetailPageViewModel vm = new RecordItemDetailPageViewModel(item.ID);
                     await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new RecordDetailPage(vm));
