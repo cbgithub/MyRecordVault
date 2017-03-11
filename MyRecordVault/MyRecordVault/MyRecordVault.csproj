@@ -48,6 +48,9 @@
     <Compile Include="ViewModels\RecordAddPageViewModel.cs" />
     <Compile Include="ViewModels\RecordItemDetailPageViewModel.cs" />
     <Compile Include="ViewModels\RecordListPageViewModel.cs" />
+    <Compile Include="Views\AuthenticationPage.xaml.cs">
+      <DependentUpon>AuthenticationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RecordAddPage.xaml.cs">
       <DependentUpon>RecordAddPage.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\RecordDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AuthenticationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

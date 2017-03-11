@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using Xamarin.Forms;
+using MyRecordVault.Droid.Services;
+using MyRecordVault.Services;
+using SQLite.Net;
+using System.IO;
+using SQLite.Net.Platform.XamarinAndroid;
 
 [assembly: Dependency(typeof(SQLite_Android))]
 namespace MyRecordVault.Droid.Services
