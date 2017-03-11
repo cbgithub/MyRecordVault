@@ -83,6 +83,7 @@ namespace MyRecordVault.ViewModels
             this.Save
                 .Subscribe(async _ => {
                     var item = this.Record.Value;
+                    item.CreatedAt = DateTime.Now;
                     await this._recordRepository.SaveItemAsync(item);
                      await App.Current.MainPage.Navigation.PopAsync();
                 });

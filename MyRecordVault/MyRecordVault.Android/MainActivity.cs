@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Refractored.XamForms.PullToRefresh.Droid;
 
 namespace MyRecordVault.Droid
 {
@@ -20,6 +21,7 @@ namespace MyRecordVault.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            PullToRefreshLayoutRenderer.Init();
             LoadApplication(new App());
         }
     }

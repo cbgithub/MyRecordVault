@@ -7,9 +7,6 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="+" Command="{Binding NavigateToAddRecordPage}">
-            <ToolbarItem.Icon>
-                <OnPlatform x:TypeArguments="FileImageSource" Android="plus.png" />
-            </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
