@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyRecordVault.Views.RecordAddPage">
+
+    <StackLayout BackgroundColor="#f0f7ff" Spacing="10" Padding="10">
+        <Entry Text="{Binding NewRecordTitle.Value}" Placeholder="Title"></Entry>
+        <Entry Text="{Binding NewRecordUserName.Value}" Placeholder="User Name"></Entry>
+        <StackLayout Orientation="Horizontal">
+            <Entry Text="{Binding NewRecordPassword.Value}" Placeholder="Password"></Entry>
+            <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
+        </StackLayout>
+        <Label  Text = "{Binding NewPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
+        <Slider x:Name="LengthOfPasswordsSlider" Minimum="6" Maximum="23" Value="{Binding NewPasswordLength.Value}"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="A-Z"></Label>
+            <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>
+            <Label Text="0-9"></Label>
+            <Switch IsToggled="{Binding IsDigit.Value}"></Switch>
+            <Label Text="!@#"></Label>
+            <Switch IsToggled="{Binding IsSpecialCharacter.Value}"></Switch>
+        </StackLayout>
+        <StackLayout Padding="0, 0, 0, 20">
+            <Label Text="Notes:" />
+            <Editor Text="{Binding NewRecordNote}" HeightRequest="150" />
+        </StackLayout>
+        <Button Text="Save" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding Save}"></Button>
+    </StackLayout>
+</ContentPage>

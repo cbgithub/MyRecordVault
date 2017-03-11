@@ -1,5 +1,6 @@
 ﻿using MyRecordVault.Models;
 using MyRecordVault.Services;
+using MyRecordVault.Views;
 using Reactive.Bindings;
 using System;
 using System.Collections.Generic;

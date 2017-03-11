@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Refractored.XamForms.PullToRefresh.iOS;
 
 namespace MyRecordVault.iOS
 {
@@ -23,6 +24,9 @@ namespace MyRecordVault.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            PullToRefreshLayoutRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
