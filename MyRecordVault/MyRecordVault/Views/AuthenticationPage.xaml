@@ -15,7 +15,7 @@
         </StackLayout>
         <StackLayout VerticalOptions="CenterAndExpand">
             <Label Text="My Record Vault" FontSize="Large" FontAttributes="Italic"  HorizontalTextAlignment="Center" TextColor="#5ABAFF"></Label>
-            <Button Text="Touch ID" BackgroundColor="#5ABAFF" BorderWidth="2" BorderRadius="5" VerticalOptions="CenterAndExpand" TextColor="White"  Clicked="OnAuthenticate"></Button>
+            <Button Text="Touch ID" Font="Large" BackgroundColor="#5ABAFF" BorderWidth="2" BorderRadius="5" VerticalOptions="CenterAndExpand" TextColor="White"  Clicked="OnAuthenticate"></Button>
                 <Label x:Name="lblStatus"></Label> 
         </StackLayout>
          

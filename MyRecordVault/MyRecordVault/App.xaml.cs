@@ -14,7 +14,7 @@ namespace MyRecordVault
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new RecordListPage())
+            MainPage = new NavigationPage(new AuthenticationPage())
             {
                 BarBackgroundColor = Color.Black,
                 BarTextColor = Color.White,
