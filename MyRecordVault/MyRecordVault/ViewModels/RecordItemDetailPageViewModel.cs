@@ -1,4 +1,5 @@
-﻿using MyRecordVault.Models;
+﻿using MyRecordVault.Helpers;
+using MyRecordVault.Models;
 using MyRecordVault.Services;
 using Reactive.Bindings;
 using System;
@@ -13,13 +14,18 @@ namespace MyRecordVault.ViewModels
 
         public ReactiveProperty<Record> Record { get; } = new ReactiveProperty<Record>();
 
-        public ReactiveProperty<string> EditRecordTitle { get; } = new ReactiveProperty<string>();
+        public ReactiveCommand GeneratePassword { get; } = new ReactiveCommand();
 
-        public ReactiveProperty<string> EditRecordUserName { get; } = new ReactiveProperty<string>();
+        public ReactiveProperty<string> NewRecordPassword { get; } = new ReactiveProperty<string>();
 
-        public ReactiveProperty<string> EditRecordPassword { get; } = new ReactiveProperty<string>();
+        public ReactiveProperty<int> NewRecordPasswordLength { get; } = new ReactiveProperty<int>();
 
-        public ReactiveProperty<string> EditRecordNote { get; } = new ReactiveProperty<string>();
+        public ReactiveProperty<bool> IsCaseSensitive { get; } = new ReactiveProperty<bool>();
+
+        public ReactiveProperty<bool> IsDigit { get; } = new ReactiveProperty<bool>();
+
+        public ReactiveProperty<bool> IsSpecialCharacter { get; } = new ReactiveProperty<bool>();
+
 
         public ReactiveCommand Save { get; } = new ReactiveCommand();
 
@@ -32,8 +38,27 @@ namespace MyRecordVault.ViewModels
         public RecordItemDetailPageViewModel(int id)
         {
             OnNavigatedTo(id);
-            
-            
+
+
+            this.GeneratePassword
+                .Subscribe(_ =>
+                {
+                    var password = new Password
+                    {
+                        Text = this.NewRecordPassword.Value,
+                        Length = this.NewRecordPasswordLength.Value,
+                        CaseSensitive = this.IsCaseSensitive.Value,
+                        Digits = this.IsDigit.Value,
+                        SpecialCharacters = this.IsSpecialCharacter.Value
+
+                    };
+                    GeneratePassword _generatePassword = new GeneratePassword(password);
+                    this.Record.Value.Password = _generatePassword._password;
+
+
+                });
+
+
 
             this.Save
                 .Subscribe(async _ => {

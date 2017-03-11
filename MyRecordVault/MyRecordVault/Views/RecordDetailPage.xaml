@@ -12,14 +12,27 @@
         <ToolbarItem Text="Delete" Command="{Binding Delete}">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <Frame BindingContext="{Binding Record.Value}" BackgroundColor="#5ABAFF">
+    <Frame BackgroundColor="#5ABAFF">
         <StackLayout BackgroundColor="#f0f7ff" Spacing="10" Padding="10">
-            <Entry Text="{Binding Title}" Placeholder="Title"></Entry>
-            <Entry Text="{Binding UserName}" Placeholder="User Name"></Entry>
-            <Entry Text="{Binding Password}" Placeholder="Password"></Entry>
+            <Entry Text="{Binding Record.Value.Title}" Placeholder="Title"></Entry>
+            <Entry Text="{Binding Record.Value.UserName}" Placeholder="User Name"></Entry>
+            <StackLayout Orientation="Horizontal">
+                <Entry Text="{Binding Record.Value.Password}"  HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
+                <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
+            </StackLayout>
+            <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
+            <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="23" Value="{Binding NewRecordPasswordLength.Value}"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="A-Z"></Label>
+                <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>
+                <Label Text="0-9"></Label>
+                <Switch IsToggled="{Binding IsDigit.Value}"></Switch>
+                <Label Text="!@#"></Label>
+                <Switch IsToggled="{Binding IsSpecialCharacter.Value}"></Switch>
+            </StackLayout>
             <StackLayout Padding="0, 0, 0, 20">
                 <Label Text="Notes:" />
-                <Editor Text="{Binding Note}" HeightRequest="150" />
+                <Editor Text="{Binding Record.Value.Note}" HeightRequest="150" />
             </StackLayout>
         </StackLayout>
         
