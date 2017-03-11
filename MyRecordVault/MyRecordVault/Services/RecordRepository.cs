@@ -31,7 +31,7 @@ namespace MyRecordVault.Services
             });
         }
 
-        public async Task<Password> FindFirstAsync(int id)
+        public async Task<Record> FindFirstAsync(int id)
         {
             return await Task.Run<Record>(() => {
                 lock (Locker)
