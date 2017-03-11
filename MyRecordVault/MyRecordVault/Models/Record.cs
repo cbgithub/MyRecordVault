@@ -1,10 +1,6 @@
 ﻿using SQLite.Net.Attributes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecordVault.Models
 {
@@ -95,6 +91,22 @@ namespace MyRecordVault.Models
             {
                 delete = value;
                 OnPropertyChanged("Delete");
+            }
+        }
+
+        public DateTime createdAt;
+
+        
+        public DateTime CreatedAt
+        {
+            get
+            {
+                return createdAt;
+            }
+            set
+            {
+                createdAt = value;
+                OnPropertyChanged("CreatedAt");
             }
         }
 
