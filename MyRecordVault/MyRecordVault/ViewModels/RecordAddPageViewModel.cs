@@ -5,6 +5,7 @@ using Plugin.Media;
 using Reactive.Bindings;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using Xamarin.Forms;
 
@@ -112,8 +113,18 @@ namespace MyRecordVault.ViewModels
                         Delete = false
                     };
                     this.RecordCollection.AddOnScheduler(record);
-                    await this._recordRepository.SaveItemAsync(record);
-                    await App.Current.MainPage.Navigation.PopAsync();
+                    try
+                    {
+                        await this._recordRepository.SaveItemAsync(record);
+                        await App.Current.MainPage.Navigation.PopAsync();
+                    }
+                    catch(Exception ex)
+                    {
+                        
+                        await App.Current.MainPage.DisplayAlert(ex.Message , "Please fill in all the fields", "ok");
+                       
+                    }
+                   
 
 
                 });
