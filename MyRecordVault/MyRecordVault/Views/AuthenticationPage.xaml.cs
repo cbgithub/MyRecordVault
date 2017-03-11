@@ -23,7 +23,7 @@ namespace MyRecordVault.Views
 
         private async void OnAuthenticate(object sender, EventArgs e)
         {
-            _cancel = swAutoCancel.IsToggled ? new CancellationTokenSource(TimeSpan.FromSeconds(10)) : new CancellationTokenSource();
+            _cancel =  new CancellationTokenSource();
             lblStatus.Text = "";
             var result = await Plugin.Fingerprint.CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers!", _cancel.Token);
 
