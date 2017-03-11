@@ -79,41 +79,6 @@ namespace MyRecordVault.ViewModels
             await OnNavigatedTo();
         }
 
-        #region Field
-        private ICommand _navigateTo;
-        #endregion Field
-
-
-        /// <summary>
-        ///
-        /// </summary>
-        public ICommand NavigateTo
-        {
-            get
-            {
-                if (_navigateTo == null)
-                {
-                    _navigateTo = new RelayCommand(
-                    param => NavigateToAddPage(),
-                    param => CanNavigateToAddPage()
-                    );
-                }
-                return _navigateTo;
-            }
-        }
-        private bool CanNavigateToAddPage()
-        {
-            // Verify command can be executed here
-            return true;
-        }
-        private void NavigateToAddPage()
-        {
-             Application.Current.MainPage.Navigation.PushAsync(new RecordAddPage());
-
-        }
-
-
-
         public ReactiveCommand NavigateToAddRecordPage { get; } = new ReactiveCommand();
 
         public ReactiveCollection<Record> Records { get; } = new ReactiveCollection<Record>();
@@ -122,6 +87,7 @@ namespace MyRecordVault.ViewModels
 
         public RecordListPageViewModel()
         {
+            Title = "Record Vault";
 
             this.NavigateToAddRecordPage
             .Subscribe(async _ =>

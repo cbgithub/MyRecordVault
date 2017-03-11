@@ -3,12 +3,30 @@ using MyRecordVault.Models;
 using MyRecordVault.Services;
 using Reactive.Bindings;
 using System;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace MyRecordVault.ViewModels
 {
-    public class RecordItemDetailPageViewModel
+    public class RecordItemDetailPageViewModel : INotifyPropertyChanged
     {
+
+        public string title;
+
+
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+            set
+            {
+                title = value;
+                OnPropertyChanged("Title");
+            }
+        }
+
 
         private readonly RecordRepository _recordRepository = new RecordRepository();
 
@@ -38,6 +56,8 @@ namespace MyRecordVault.ViewModels
         public RecordItemDetailPageViewModel(int id)
         {
             OnNavigatedTo(id);
+
+            
 
 
             this.GeneratePassword
@@ -82,6 +102,22 @@ namespace MyRecordVault.ViewModels
 
             
         }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // <summary>
+        /// Use to notify the view when one of the Fields changes.
+        /// </summary>
+        /// <param name="name"></param>
+        public void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
 
 
 
