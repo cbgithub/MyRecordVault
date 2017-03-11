@@ -22,7 +22,7 @@
         </StackLayout>
         <StackLayout Padding="0, 0, 0, 20">
             <Label Text="Notes:" />
-            <Editor Text="{Binding NewRecordNote}" HeightRequest="150" />
+            <Editor Text="{Binding NewRecordNote.Value}" HeightRequest="150" />
         </StackLayout>
         <Button Text="Save" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding Save}"></Button>
     </StackLayout>
