@@ -1,9 +1,12 @@
 ﻿using MyRecordVault.Helpers;
 using MyRecordVault.Models;
 using MyRecordVault.Services;
+using Plugin.Media;
 using Reactive.Bindings;
 using System;
 using System.ComponentModel;
+using System.IO;
+using Xamarin.Forms;
 
 namespace MyRecordVault.ViewModels
 {
@@ -29,11 +32,14 @@ namespace MyRecordVault.ViewModels
             }
         }
 
+
+
         public ReactiveProperty<string> NewRecordTitle { get; } = new ReactiveProperty<string>();
 
         public ReactiveProperty<string> NewRecordUserName { get; } = new ReactiveProperty<string>();
 
         public ReactiveProperty<string> NewRecordPassword { get; } = new ReactiveProperty<string>();
+
 
         public ReactiveProperty<string> NewRecordNote { get; } = new ReactiveProperty<string>();
 
@@ -46,6 +52,7 @@ namespace MyRecordVault.ViewModels
         public ReactiveProperty<bool> IsSpecialCharacter { get; } = new ReactiveProperty<bool>();
 
         public ReactiveCommand GeneratePassword { get; } = new ReactiveCommand();
+
 
         public ReactiveCommand Save { get; } = new ReactiveCommand();
 
@@ -89,6 +96,8 @@ namespace MyRecordVault.ViewModels
 
                 });
 
+
+            
 
             this.Save
                 .Subscribe(async _ =>

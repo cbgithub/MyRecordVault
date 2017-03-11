@@ -1,6 +1,8 @@
 ﻿using SQLite.Net.Attributes;
 using System;
 using System.ComponentModel;
+using System.IO;
+using Xamarin.Forms;
 
 namespace MyRecordVault.Models
 {
@@ -77,6 +79,9 @@ namespace MyRecordVault.Models
                 OnPropertyChanged("Note");
             }
         }
+
+        
+
 
         public bool delete;
 
