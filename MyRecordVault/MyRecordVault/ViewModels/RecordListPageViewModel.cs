@@ -70,14 +70,10 @@ namespace MyRecordVault.ViewModels
             
             IsBusy = true;
             await OnNavigatedTo();
-            
-
-            //DoStuff
+         
 
             IsBusy = false;
-            /*
-            await OnNavigatedTo();
-            */
+           
         }
 
         public ReactiveCommand NavigateToAddRecordPage { get; } = new ReactiveCommand();

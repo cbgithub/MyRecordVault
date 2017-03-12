@@ -16,7 +16,7 @@
                 <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
             </StackLayout>
             <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
-            <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="23" Value="{Binding NewRecordPasswordLength.Value}"/>
+            <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="35" Value="{Binding NewRecordPasswordLength.Value}"/>
             <StackLayout Orientation="Horizontal">
                 <Label Text="A-Z"></Label>
                 <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>
