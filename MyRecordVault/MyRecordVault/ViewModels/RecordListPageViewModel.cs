@@ -1,14 +1,11 @@
-﻿using MyRecordVault.Commands;
-using MyRecordVault.Models;
+﻿using MyRecordVault.Models;
 using MyRecordVault.Services;
 using MyRecordVault.Views;
 using Reactive.Bindings;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -70,13 +67,17 @@ namespace MyRecordVault.ViewModels
             if (IsBusy)
                 return;
 
+            
             IsBusy = true;
             await OnNavigatedTo();
+            
 
             //DoStuff
 
             IsBusy = false;
+            /*
             await OnNavigatedTo();
+            */
         }
 
         public ReactiveCommand NavigateToAddRecordPage { get; } = new ReactiveCommand();

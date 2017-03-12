@@ -1,13 +1,9 @@
 ﻿using MyRecordVault.Helpers;
 using MyRecordVault.Models;
 using MyRecordVault.Services;
-using Plugin.Media;
 using Reactive.Bindings;
 using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using Xamarin.Forms;
 
 namespace MyRecordVault.ViewModels
 {

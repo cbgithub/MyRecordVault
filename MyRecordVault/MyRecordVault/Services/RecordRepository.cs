@@ -1,9 +1,7 @@
 ﻿using MyRecordVault.Models;
 using SQLite.Net;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -26,7 +24,9 @@ namespace MyRecordVault.Services
                 lock (Locker)
                 {
                     return _db.Table<Record>()
-                        .Where(m => m.Delete == false && m.ParentID == parentID);
+                        .Where(m => m.Delete == false && m.ParentID == parentID)
+                        .OrderByDescending(m => m.CreatedAt);
+                        
                 }
             });
         }
