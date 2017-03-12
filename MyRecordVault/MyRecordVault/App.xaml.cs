@@ -16,7 +16,7 @@ namespace MyRecordVault
 
             MainPage = new NavigationPage(new AuthenticationPage())
             {
-                BarBackgroundColor = Color.Black,
+                BarBackgroundColor = Color.FromHex("#5ABAFF"),
                 BarTextColor = Color.White,
                 
             };

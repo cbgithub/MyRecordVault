@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyRecordVault.Views.AuthenticationPage"
              BackgroundColor="Black"
-             Title="Welcome">
+             Title="Log In">
+
     <RelativeLayout>
-        <Image Source="Vault.JPG" Opacity="1.0" 
+        <Image Source="Keys.JPG" Opacity="0.3" 
                 RelativeLayout.WidthConstraint=
                   "{ConstraintExpression Type=RelativeToParent, Property=Width}"
                 RelativeLayout.HeightConstraint=
@@ -14,10 +15,25 @@
               "{ConstraintExpression Type=RelativeToParent, Property=Width}"
             RelativeLayout.HeightConstraint=
               "{ConstraintExpression Type=RelativeToParent, Property=Height}">
-            <StackLayout VerticalOptions="EndAndExpand">
-                <Button Text="Login In" Font="Large" BackgroundColor="#5ABAFF"  VerticalOptions="Center" TextColor="White"  Clicked="OnAuthenticate"></Button>
+            <StackLayout VerticalOptions="Center">
+                <Label Text="Welcome to My Record Vault" FontAttributes="Italic" TextColor="White" HorizontalTextAlignment="Center"></Label>
+                <Label Text="Keep your passwords in a safe place." FontAttributes="Italic" TextColor="White" HorizontalTextAlignment="Center"></Label>
+                <Frame BackgroundColor="Transparent"  Margin="50">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        
+                        <Label Text="  Use Touch ID" TextColor="White" HorizontalTextAlignment="Center"></Label>
+                        <Button Text="Login" Font="Large" BackgroundColor="#5ABAFF"  VerticalOptions="Center" TextColor="White"  Clicked="OnAuthenticate"></Button>
+                       
+                        <StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
-            
+                
+                
+          
+
         </Grid>
     </RelativeLayout>
+
 </ContentPage>
