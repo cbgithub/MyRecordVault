@@ -1,25 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyRecordVault.Views.AuthenticationPage">
-    <StackLayout Orientation="Vertical"  Padding="10" BackgroundColor="Black">
-        <StackLayout Orientation="Horizontal">
-            <StackLayout.IsVisible>
-                <OnPlatform x:TypeArguments="x:Boolean"
-          iOS="True"
-          Android="True"
-          WinPhone="False" />
-            </StackLayout.IsVisible>
+             x:Class="MyRecordVault.Views.AuthenticationPage"
+             BackgroundColor="Black"
+             Title="Welcome">
+    <RelativeLayout>
+        <Image Source="Vault.JPG" Opacity="1.0" 
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+        <Grid RelativeLayout.WidthConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+            RelativeLayout.HeightConstraint=
+              "{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Button Text="Login In" Font="Large" BackgroundColor="#5ABAFF"  VerticalOptions="Center" TextColor="White"  Clicked="OnAuthenticate"></Button>
+            </StackLayout>
             
-            <Label Text="Cancel after 10sec"></Label>
-        </StackLayout>
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="My Record Vault" FontSize="Large"  HorizontalTextAlignment="Center" TextColor="#5ABAFF"></Label>
-            <Button Text="Login In" Font="Large"  VerticalOptions="CenterAndExpand" TextColor="White"  Clicked="OnAuthenticate"/>
-            <Label x:Name="lblStatus"></Label>
-        </StackLayout>
-         
-      
-       
-    </StackLayout>
+        </Grid>
+    </RelativeLayout>
 </ContentPage>

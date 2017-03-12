@@ -23,8 +23,7 @@ namespace MyRecordVault.Views
 
         private async void OnAuthenticate(object sender, EventArgs e)
         {
-            _cancel =  new CancellationTokenSource();
-            lblStatus.Text = "";
+            _cancel = new CancellationTokenSource();
             var result = await Plugin.Fingerprint.CrossFingerprint.Current.AuthenticateAsync("Prove you have fingers!", _cancel.Token);
 
             await SetResultAsync(result);
@@ -39,10 +38,7 @@ namespace MyRecordVault.Views
                 await Navigation.PushAsync(new RecordListPage());
                     
             }
-            else
-            {
-                lblStatus.Text = $"{result.Status}: {result.ErrorMessage}";
-            }
+           
         }
     }
 
