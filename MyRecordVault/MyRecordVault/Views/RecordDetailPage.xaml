@@ -13,33 +13,40 @@
         <ToolbarItem Text="Delete" Command="{Binding Delete}">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
-    <Frame BackgroundColor="#5ABAFF">
-        <StackLayout BackgroundColor="#f0f7ff" Spacing="10" Padding="10">
-            <Entry Text="{Binding Record.Value.Title}" Placeholder="Title"></Entry>
-            <Entry Text="{Binding Record.Value.UserName}" Placeholder="User Name"></Entry>
-            <StackLayout Orientation="Horizontal">
-                <Entry Text="{Binding Record.Value.Password}"  HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
-                <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
+
+    <ScrollView>
+        <ScrollView.Padding>
+            <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0" />
+        </ScrollView.Padding>
+
+        <Frame BackgroundColor="#5ABAFF">
+            <StackLayout BackgroundColor="#f0f7ff" Spacing="10" Padding="10">
+                <Entry Text="{Binding Record.Value.Title}" Placeholder="Title"></Entry>
+                <Entry Text="{Binding Record.Value.UserName}" Placeholder="User Name"></Entry>
+                <StackLayout Orientation="Horizontal">
+                    <Entry Text="{Binding Record.Value.Password}"  HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
+                    <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
+                </StackLayout>
+                <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
+                <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="35" Value="{Binding NewRecordPasswordLength.Value}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="A-Z"></Label>
+                    <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>
+                    <Label Text="0-9"></Label>
+                    <Switch IsToggled="{Binding IsDigit.Value}"></Switch>
+                    <Label Text="!@#"></Label>
+                    <Switch IsToggled="{Binding IsSpecialCharacter.Value}"></Switch>
+                </StackLayout>
+                <StackLayout Padding="0, 0, 0, 20">
+                    <Label Text="Notes:" />
+                    <Editor Text="{Binding Record.Value.Note}" HeightRequest="150" />
+                </StackLayout>
             </StackLayout>
-            <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
-            <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="35" Value="{Binding NewRecordPasswordLength.Value}"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="A-Z"></Label>
-                <Switch IsToggled="{Binding IsCaseSensitive.Value}"></Switch>
-                <Label Text="0-9"></Label>
-                <Switch IsToggled="{Binding IsDigit.Value}"></Switch>
-                <Label Text="!@#"></Label>
-                <Switch IsToggled="{Binding IsSpecialCharacter.Value}"></Switch>
-            </StackLayout>
-            <StackLayout Padding="0, 0, 0, 20">
-                <Label Text="Notes:" />
-                <Editor Text="{Binding Record.Value.Note}" HeightRequest="150" />
-            </StackLayout>
-        </StackLayout>
-        
-    </Frame>
-    
-    
-    
-    
+
+        </Frame>
+    </ScrollView>
+
+
+
+
 </ContentPage>
