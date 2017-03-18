@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyRecordVault.Views.RecordAddPage">
+             x:Class="MyRecordVault.Views.RecordAddPage"
+             BackgroundColor="Black">
 
     <ScrollView>
         <ScrollView.Padding>
@@ -12,9 +13,10 @@
             <Entry Text="{Binding NewRecordTitle.Value}" Placeholder="Title"></Entry>
             <Entry Text="{Binding NewRecordUserName.Value}" Placeholder="User Name"></Entry>
             <StackLayout Orientation="Horizontal">
-                <Entry Text="{Binding NewRecordPassword.Value}" HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
+                <Entry Text="{Binding Password}" HorizontalOptions="FillAndExpand" Placeholder="Password"></Entry>
                 <Button Text="Generate" BackgroundColor="#A6E55E" TextColor="White" Command="{Binding GeneratePassword}"></Button>
             </StackLayout>
+            <ProgressBar x:Name="ProgressBar"  Progress="{Binding NewRecordPasswordStrength.Value}"></ProgressBar>
             <Label  Text = "{Binding NewRecordPasswordLength.Value, StringFormat='Length = {0:F0}'}" x:Name="LengthOfPasswordsLabel"/>
             <Slider x:Name="LengthOfPasswordsSlider" Minimum="0" Maximum="35" Value="{Binding NewRecordPasswordLength.Value}"/>
             <StackLayout Orientation="Horizontal">

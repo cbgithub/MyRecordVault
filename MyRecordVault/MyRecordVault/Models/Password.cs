@@ -22,6 +22,23 @@ namespace MyRecordVault.Models
         }
 
 
+        public double strength;
+
+
+        public double Strength
+        {
+            get
+            {
+                return strength;
+            }
+            set
+            {
+                strength = value;
+                OnPropertyChanged("Strength");
+            }
+        }
+
+
         public int length;
 
 

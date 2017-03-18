@@ -18,6 +18,7 @@ namespace MyRecordVault.Views
         {
             InitializeComponent();
             BindingContext = vm;
+           
         }
     }
 }

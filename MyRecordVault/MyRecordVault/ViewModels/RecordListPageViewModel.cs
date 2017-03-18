@@ -90,7 +90,7 @@ namespace MyRecordVault.ViewModels
             .Subscribe(async _ =>
             {
                 
-                await Application.Current.MainPage.Navigation.PushAsync(new RecordAddPage());
+               await Application.Current.MainPage.Navigation.PushAsync(new RecordAddPage());
             });
 
 

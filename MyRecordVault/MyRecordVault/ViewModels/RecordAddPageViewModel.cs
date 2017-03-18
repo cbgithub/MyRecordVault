@@ -4,6 +4,7 @@ using MyRecordVault.Services;
 using Reactive.Bindings;
 using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace MyRecordVault.ViewModels
 {
@@ -29,6 +30,25 @@ namespace MyRecordVault.ViewModels
             }
         }
 
+        public string password;
+
+      
+        public string Password
+        {
+            get
+            {
+                
+                return password;
+                
+            }
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
+                checkPasswordStrength();
+            }
+        }
+
 
 
         public ReactiveProperty<string> NewRecordTitle { get; } = new ReactiveProperty<string>();
@@ -41,6 +61,8 @@ namespace MyRecordVault.ViewModels
         public ReactiveProperty<string> NewRecordNote { get; } = new ReactiveProperty<string>();
 
         public ReactiveProperty<int> NewRecordPasswordLength { get; } = new ReactiveProperty<int>();
+
+        public ReactiveProperty<double> NewRecordPasswordStrength { get; } = new ReactiveProperty<double>();
 
         public ReactiveProperty<bool> IsCaseSensitive { get; } = new ReactiveProperty<bool>();
 
@@ -70,9 +92,43 @@ namespace MyRecordVault.ViewModels
             }
         }
 
+        public void checkPasswordStrength()
+        {
+
+            Regex strongPassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&_-])[A-Za-z\d$@$!%*?&_-]{16,30}");
+            Regex acceptablePassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&_-])[A-Za-z\d$@$!%*?&_-]{7,15}");
+            Regex weakPassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&_-])[A-Za-z\d$@$!%*?&_-]{1,6}");
+
+            
+
+            if (Password!=null && strongPassword.IsMatch(Password))
+            {
+                NewRecordPasswordStrength.Value = 1;
+            }
+            else if (Password != null && acceptablePassword.IsMatch(Password))
+            {
+                NewRecordPasswordStrength.Value = 0.6;
+            }
+            else if (Password != null && weakPassword.IsMatch(Password))
+            {
+                NewRecordPasswordStrength.Value = 0.4;
+            }
+            else if(string.IsNullOrEmpty(password))
+            {
+                NewRecordPasswordStrength.Value = 0;
+            }
+            else
+            {
+                NewRecordPasswordStrength.Value = 0.2;
+            }
+
+
+        }
 
         public RecordAddPageViewModel()
         {
+            
+
 
 
             this.GeneratePassword
@@ -80,7 +136,7 @@ namespace MyRecordVault.ViewModels
                 {
                     var password = new Password
                     {
-                        Text = this.NewRecordPassword.Value,
+                        Text = Password,
                         Length = this.NewRecordPasswordLength.Value,
                         CaseSensitive = this.IsCaseSensitive.Value,
                         Digits = this.IsDigit.Value,
@@ -88,8 +144,11 @@ namespace MyRecordVault.ViewModels
 
                     };
                     GeneratePassword _generatePassword = new GeneratePassword(password);
-                    this.NewRecordPassword.Value = _generatePassword._password;
-
+                    Password = _generatePassword._password;
+                 
+                 
+                    
+                    
 
                 });
 
@@ -103,7 +162,7 @@ namespace MyRecordVault.ViewModels
                     {
                         Title = this.NewRecordTitle.Value,
                         UserName = this.NewRecordUserName.Value,
-                        Password = this.NewRecordPassword.Value,
+                        Password = Password,
                         Note = this.NewRecordNote.Value,
                         CreatedAt = DateTime.Now,
                         Delete = false
@@ -117,7 +176,7 @@ namespace MyRecordVault.ViewModels
                     catch(Exception ex)
                     {
                         
-                        await App.Current.MainPage.DisplayAlert(ex.Message , "Please fill in all the fields", "ok");
+                        await App.Current.MainPage.DisplayAlert("Error", ex.Message, "ok");
                        
                     }
                    

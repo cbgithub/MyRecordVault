@@ -38,7 +38,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Helpers\GeneratePassword.cs" />
     <Compile Include="Models\Password.cs" />
     <Compile Include="Models\Record.cs" />

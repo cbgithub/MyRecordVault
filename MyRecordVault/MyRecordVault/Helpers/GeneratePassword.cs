@@ -34,7 +34,7 @@ namespace MyRecordVault.Helpers
             }
             if (model.SpecialCharacters)
             {
-                var _specialCharacters = "!@$?_-";
+                var _specialCharacters = "!@$%?_-*";
                 _buildPassword += _specialCharacters;
             }
 

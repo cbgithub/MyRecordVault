@@ -4,6 +4,7 @@ using MyRecordVault.Services;
 using Reactive.Bindings;
 using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
 namespace MyRecordVault.ViewModels
@@ -27,6 +28,25 @@ namespace MyRecordVault.ViewModels
             }
         }
 
+        public string password;
+
+
+        public string Password
+        {
+            get
+            {
+
+                return password;
+
+            }
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
+                checkPasswordStrength();
+            }
+        }
+
 
         private readonly RecordRepository _recordRepository = new RecordRepository();
 
@@ -37,6 +57,8 @@ namespace MyRecordVault.ViewModels
         public ReactiveProperty<string> NewRecordPassword { get; } = new ReactiveProperty<string>();
 
         public ReactiveProperty<int> NewRecordPasswordLength { get; } = new ReactiveProperty<int>();
+
+        public ReactiveProperty<double> NewRecordPasswordStrength { get; } = new ReactiveProperty<double>();
 
         public ReactiveProperty<bool> IsCaseSensitive { get; } = new ReactiveProperty<bool>();
 
@@ -51,7 +73,38 @@ namespace MyRecordVault.ViewModels
 
         public ReactiveCollection<Record> Records { get; } = new ReactiveCollection<Record>();
 
+        public void checkPasswordStrength()
+        {
 
+            Regex strongPassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&_-])[A-Za-z\d$@$!%*?&_-]{16,30}");
+            Regex acceptablePassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&_-])[A-Za-z\d$@$!%*?&_-]{7,15}");
+            Regex weakPassword = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&_-])[A-Za-z\d$@$!%*?&_-]{1,6}");
+
+
+
+            if (Password != null && strongPassword.IsMatch(Password))
+            {
+                NewRecordPasswordStrength.Value = 1;
+            }
+            else if (Password != null && acceptablePassword.IsMatch(Password))
+            {
+                NewRecordPasswordStrength.Value = 0.6;
+            }
+            else if (Password != null && weakPassword.IsMatch(Password))
+            {
+                NewRecordPasswordStrength.Value = 0.4;
+            }
+            else if (string.IsNullOrEmpty(password))
+            {
+                NewRecordPasswordStrength.Value = 0;
+            }
+            else
+            {
+                NewRecordPasswordStrength.Value = 0.2;
+            }
+
+
+        }
 
         public RecordItemDetailPageViewModel(int id)
         {
@@ -65,7 +118,7 @@ namespace MyRecordVault.ViewModels
                 {
                     var password = new Password
                     {
-                        Text = this.NewRecordPassword.Value,
+                        Text = Password,
                         Length = this.NewRecordPasswordLength.Value,
                         CaseSensitive = this.IsCaseSensitive.Value,
                         Digits = this.IsDigit.Value,
@@ -73,7 +126,7 @@ namespace MyRecordVault.ViewModels
 
                     };
                     GeneratePassword _generatePassword = new GeneratePassword(password);
-                    this.Record.Value.Password = _generatePassword._password;
+                    Password = _generatePassword._password;
 
 
                 });
@@ -84,6 +137,7 @@ namespace MyRecordVault.ViewModels
                 .Subscribe(async _ => {
                     var item = this.Record.Value;
                     item.CreatedAt = DateTime.Now;
+                    item.Password = Password;
                     await this._recordRepository.SaveItemAsync(item);
                      await App.Current.MainPage.Navigation.PopAsync();
                 });
@@ -127,6 +181,7 @@ namespace MyRecordVault.ViewModels
         {
            
             this.Record.Value = await this._recordRepository.FindFirstAsync(id);
+            Password = this.Record.Value.Password;
            
            
             // SQLite
